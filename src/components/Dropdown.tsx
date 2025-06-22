@@ -11,6 +11,15 @@ interface DropdownProps {
   children: React.ReactNode;
 }
 
+/**
+ * A dropdown component that renders a button and a ul of children.
+ *
+ * @prop {boolean} isExpanded - Whether the dropdown is expanded or not.
+ * @prop {() => void} open - A function to open the dropdown.
+ * @prop {() => void} close - A function to close the dropdown.
+ * @prop {string} currentFont - The currently selected font.
+ * @prop {React.ReactNode} children - The children of the dropdown, usually a list of fonts.
+ */
 export default function Dropdown({
   isExpanded,
   open,

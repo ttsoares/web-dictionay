@@ -3,7 +3,6 @@ interface SwitchProps {
   toggle: () => void
 }
 
-
 export default function Switch({ checked, toggle }: SwitchProps) {
   return (
     <label className="ml-4 tablet:ml-[1.625rem] relative inline-block w-[40px] h-[20px]" aria-label="Dark mode">

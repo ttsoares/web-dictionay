@@ -1,38 +1,47 @@
-import { useEffect, Dispatch, SetStateAction } from 'react';
-import Dropdown from './Dropdown';
-import Switch from './Switch';
+import { Dispatch, SetStateAction } from 'react'
+import Dropdown from './Dropdown'
+import Switch from './Switch'
 
-import logo from '../assets/images/logo.svg';
-import moonIcon from '../assets/images/icon-moon.svg';
-import moonIconDark from '../assets/images/icon-moon-purple.svg';
-import useToggler from '../hooks/useToggler';
-import fontNames from '../utils/font-names';
+import logo from '../assets/images/logo.svg'
+import moonIcon from '../assets/images/icon-moon.svg'
+import moonIconDark from '../assets/images/icon-moon-purple.svg'
+import useToggler from '../hooks/useToggler'
+import fontNames from '../utils/font-names'
 
 interface HeaderProps {
-  currentFont: string;
-  applyFont: Dispatch<SetStateAction<string>>;
+  currentFont: string
+  applyFont: Dispatch<SetStateAction<string>>
+  theme: string
+  setTheme: Dispatch<SetStateAction<string>>
 }
 
-export default function Header({ currentFont, applyFont }: HeaderProps) {
-  const [isDarkTheme, toggleTheme] = useToggler(localStorage.getItem('theme-color') === 'dark');
-  const [isDropdownExpanded, toggleDropdown] = useToggler(false);
+/**
+ * Header component with a logo, a dropdown for font selection, and a dark mode switch.
+ * @param {Object} props
+ * @prop {string} currentFont - The currently selected font.
+ * @prop {Function} applyFont - A function to set the current font.
+ * @prop {string} theme - The current theme.
+ * @prop {Function} setTheme - A function to set the current theme.
+ * @returns {ReactElement} The Header component.
+ */
+export default function Header({ currentFont, applyFont, theme, setTheme }: HeaderProps) {
+  const [isDropdownExpanded, toggleDropdown] = useToggler(false)
 
-  useEffect(() => {
-    document.documentElement.className = isDarkTheme ? 'dark' : '';
-    localStorage.setItem('theme-color', isDarkTheme ? 'dark' : 'light');
-  }, [isDarkTheme]);
+  function toggleTheme() {
+    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'))
+  }
 
   function selectItem(value: string) {
-    applyFont(value);
-    closeDropdown();
+    applyFont(value)
+    closeDropdown()
   }
 
   function openDropdown() {
-    if (!isDropdownExpanded) toggleDropdown();
+    if (!isDropdownExpanded) toggleDropdown()
   }
 
   function closeDropdown() {
-    if (isDropdownExpanded) toggleDropdown();
+    if (isDropdownExpanded) toggleDropdown()
   }
 
   const listItems = Object.entries(fontNames).map(([key, value]) => (
@@ -43,7 +52,7 @@ export default function Header({ currentFont, applyFont }: HeaderProps) {
     >
       <button>{key}</button>
     </li>
-  ));
+  ))
 
   return (
     <header className="flex justify-between mt-6 mb-6 tablet:mt-[3.625rem] tablet:mb-[3.25rem]">
@@ -59,9 +68,9 @@ export default function Header({ currentFont, applyFont }: HeaderProps) {
         </Dropdown>
 
         <div className="flex items-center">
-          <Switch checked={isDarkTheme} toggle={toggleTheme} />
+          <Switch checked={theme === 'dark'} toggle={toggleTheme} />
           <img
-            src={isDarkTheme ? moonIconDark : moonIcon}
+            src={theme === 'dark' ? moonIconDark : moonIcon}
             aria-hidden="true"
             className="ml-3 tablet:ml-5"
             alt="Moon icon"
@@ -69,5 +78,5 @@ export default function Header({ currentFont, applyFont }: HeaderProps) {
         </div>
       </div>
     </header>
-  );
+  )
 }

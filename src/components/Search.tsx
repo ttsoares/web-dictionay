@@ -4,6 +4,14 @@ type FormData = {
   word: string
 }
 
+/**
+ * The Search component renders a form with an input field
+ * and an error message if the input is invalid.
+ *
+ * @param {{ onSubmit: (input: string) => void }} props
+ * @prop {function} onSubmit - callback to be called when the form is submitted
+ * @returns {JSX.Element}
+ */
 export default function Search({ onSubmit }: { onSubmit: (input: string) => void }) {
   const {
     register,

@@ -8,6 +8,20 @@ interface WordProps {
   data: DictionaryEntry;
   isError: boolean;
 }
+/**
+ * Renders the main component displaying word details including phonetics, meanings, and source.
+ *
+ * @param {WordProps} props - The properties for the Word component.
+ * @param {DictionaryEntry} props.data - The dictionary entry data for the word.
+ * @param {boolean} props.isError - Flag indicating if there was an error fetching the word data.
+ *
+ * This component includes:
+ * - The word and its phonetic transcription.
+ * - A button to play the audio pronunciation if available.
+ * - A list of meanings and examples.
+ * - A source link for the word information.
+ */
+
 export default function Word({ data, isError }: WordProps) {
   const validPhonetics = data.phonetics?.find(phonetics => phonetics.text && phonetics.audio)
   const audioRef = useRef<HTMLAudioElement | null>(null);

@@ -11,6 +11,11 @@ export function useDictionaryFetch() {
 
   const initialInput = queryParams.get("word") ?? "wind";
 
+  /**
+   * Fetches the dictionary entry for the given word.
+   * @param {string} input The word to fetch the dictionary entry for.
+   * @returns {void}
+   */
   function fetchData(input: string) {
     setIsLoading(true);
     setIsError(false);
@@ -25,7 +30,6 @@ export function useDictionaryFetch() {
     );
   }
 
-  // Fetch on first mount or when query param changes
   useEffect(() => {
     fetchData(initialInput);
   }, [initialInput]);

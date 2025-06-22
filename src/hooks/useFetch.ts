@@ -1,11 +1,19 @@
-/// <reference types="node" />
-
 import nProgress from "nprogress";
 
 nProgress.configure({
   showSpinner: false,
 });
 
+/**
+ * Fetches the given URL and updates the state accordingly.
+ *
+ * @param {string | Request} url The URL to fetch.
+ * @param {(data: T) => void} dataSetter A function to call with the received data.
+ * @param {(error: boolean) => void} loadingSetter A function to call when the request is in progress.
+ * @param {(error: boolean) => void} errorSetter A function to call when the request fails.
+ *
+ * @template T The type of the data to receive.
+ */
 export default async function useFetch<T>(
   url: string | Request,
   dataSetter: (data: T) => void,

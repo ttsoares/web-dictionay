@@ -3,13 +3,23 @@ import type { Meaning } from "../utils/DictionaryTypes";
 interface MeaningProps {
   meaning: Meaning;
 }
+/**
+ * A component that renders a Meaning object from the Free Dictionary API.
+ * The component shows the part of speech, definitions, and synonyms for the meaning.
+ * Synonyms are grouped by definition and also shown across all definitions.
+ *
+ * @param {Meaning} meaning - The Meaning object from the API
+ *
+ * @returns A JSX element representing the Meaning component
+ */
 export default function MeaningComponent({ meaning }: MeaningProps) {
-  // Flatten all synonyms from all definitions under this meaning
+
+  // Flatten all synonyms
   const meaningSynonyms = meaning.definitions.flatMap((def) => def.synonyms);
 
   return (
     <section className="mt-8 tablet:mt-10 text-default tablet:text-body-m">
-      {/* Part of Speech */}
+      {/* Speech */}
       <div className="flex items-center mb-8 tablet:mb-10">
         <h2 className="font-bold italic mr-4 tablet:text-heading-m tablet:leading-heading-m">
           {meaning.partOfSpeech}
@@ -17,7 +27,7 @@ export default function MeaningComponent({ meaning }: MeaningProps) {
         <hr className="w-full border-gray-2 dark:border-black-4" />
       </div>
 
-      {/* Meaning Title */}
+      {/* Meaning */}
       <p className="text-gray tablet:text-heading-s tablet:leading-heading-s">Meaning</p>
 
       {/* Definitions List */}
@@ -29,7 +39,7 @@ export default function MeaningComponent({ meaning }: MeaningProps) {
               <p className="text-gray mt-3">"{definition.example}"</p>
             )}
 
-            {/* Optional: Show synonyms inside each definition */}
+            {/* Synonyms inside each definition */}
             {definition.synonyms.length > 0 && (
               <div className="mt-2">
                 <p className="text-purple font-semibold">Synonyms:</p>
