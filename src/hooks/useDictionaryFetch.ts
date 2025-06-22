@@ -9,7 +9,9 @@ export function useDictionaryFetch() {
   const [isError, setIsError] = useState(false);
   const [queryParams, setQueryParams] = useSearchParams();
 
-  const initialInput = queryParams.get("word") ?? "wind";
+  const FIRST_WORD = "wind";
+
+  const initialInput = queryParams.get("word") ?? FIRST_WORD;
 
   /**
    * Fetches the dictionary entry for the given word.
