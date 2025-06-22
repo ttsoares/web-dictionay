@@ -35,7 +35,17 @@ export default function InnerApp({ currentFont, setCurrentFont, fontClass, theme
 
   const { word, isLoading, isError, submitNewWord } = useDictionaryFetch()
 
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading && word?.word === "wind") {
+    return (
+      <div className="h-screen w-screen flex justify-center items-center bg-black">
+        <img
+          src="/preview.jpg"
+          alt="App preview"
+          className="max-w-full max-h-full object-contain"
+        />
+      </div>
+    )
+  }
 
   return (
     <div
