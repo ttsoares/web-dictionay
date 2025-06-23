@@ -41,7 +41,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Add solution URL here](https://github.com/ttsoares/web-dictionay)
-- Live Site URL: [Add live site URL here](https://web-dictionay-1txzp8hgn-thomas-tsoares-projects.vercel.app/)
+- Live Site URL: [Add live site URL here](https://web-dictionay.vercel.app/)
 
 ## My process
 
