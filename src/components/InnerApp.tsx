@@ -48,7 +48,7 @@ export default function InnerApp({ currentFont, setCurrentFont, fontClass, theme
   }
 
   return (
-    <div
+    <main
       className={`${fontClass} desktop:container px-6 tablet:px-10 text-black-3 dark:text-white text-body-m`}
     >
       <Header
@@ -60,6 +60,6 @@ export default function InnerApp({ currentFont, setCurrentFont, fontClass, theme
       <Search onSubmit={submitNewWord} />
       {isError && <NotFound />}
       {!isLoading && !isError && word && <Word data={word} isError={isError} />}
-    </div>
+    </main>
   )
 }
