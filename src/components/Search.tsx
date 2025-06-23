@@ -27,7 +27,7 @@ export default function Search({ onSubmit }: { onSubmit: (input: string) => void
   const invalidClass = errors.word ? 'border-[1px] border-red' : ''
 
   return (
-    <div>
+    <main>
       <form onSubmit={handleSubmit(submitHandler)}>
         <input
           className={`w-full bg-gray-3 dark:bg-black-2 leading-[1.25rem] rounded-2xl py-[0.875rem] pl-6 pr-14 tablet:py-5 tablet:pl-6
@@ -39,6 +39,6 @@ export default function Search({ onSubmit }: { onSubmit: (input: string) => void
           <div className="text-red mt-2">Whoops, can&rsquo;t be empty&hellip;</div>
         )}
       </form>
-    </div>
+    </main>
   )
 }
