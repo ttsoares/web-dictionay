@@ -13,11 +13,6 @@ export function useDictionaryFetch() {
 
   const initialInput = queryParams.get("word") ?? FIRST_WORD;
 
-  /**
-   * Fetches the dictionary entry for the given word.
-   * @param {string} input The word to fetch the dictionary entry for.
-   * @returns {void}
-   */
   function fetchData(input: string) {
     setIsLoading(true);
     setIsError(false);

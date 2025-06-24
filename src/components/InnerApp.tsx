@@ -10,28 +10,10 @@ interface InnerAppProps {
   setCurrentFont: Dispatch<SetStateAction<string>>
   fontClass: string
   theme: string
-  setTheme: Dispatch<SetStateAction<string>>
+  toggleTheme: () => void
 }
 
-/**
- * InnerApp component that manages the main application state and renders
- * the header, search input, and word details.
- *
- * @param {InnerAppProps} props - The properties for the InnerApp component.
- * @param {string} props.currentFont - The currently selected font.
- * @param {Dispatch<SetStateAction<string>>} props.setCurrentFont - Function to update the current font.
- * @param {string} props.fontClass - The CSS class name for the current font.
- * @param {string} props.theme - The current theme, either 'light' or 'dark'.
- * @param {Dispatch<SetStateAction<string>>} props.setTheme - Function to update the theme.
- *
- * This component handles:
- * - Fetching word data from the dictionary API.
- * - Displaying a loading state while data is being fetched.
- * - Displaying an error message if the word is not found.
- * - Rendering the word details if data is successfully fetched.
- */
-
-export default function InnerApp({ currentFont, setCurrentFont, fontClass, theme, setTheme }: InnerAppProps) {
+export default function InnerApp({ currentFont, setCurrentFont, fontClass, theme, toggleTheme }: InnerAppProps) {
 
   const { word, isLoading, isError, submitNewWord } = useDictionaryFetch()
 
@@ -48,14 +30,12 @@ export default function InnerApp({ currentFont, setCurrentFont, fontClass, theme
   }
 
   return (
-    <main
-      className={`${fontClass} desktop:container px-6 tablet:px-10 text-black-3 dark:text-white text-body-m`}
-    >
+    <main className={`${fontClass} desktop:container px-6 tablet:px-10 text-black-3 dark:text-white text-body-m`}>
       <Header
         currentFont={currentFont}
         applyFont={setCurrentFont}
         theme={theme}
-        setTheme={setTheme}
+        toggleTheme={toggleTheme}
       />
       <Search onSubmit={submitNewWord} />
       {isError && <NotFound />}

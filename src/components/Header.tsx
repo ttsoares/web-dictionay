@@ -12,24 +12,11 @@ interface HeaderProps {
   currentFont: string
   applyFont: Dispatch<SetStateAction<string>>
   theme: string
-  setTheme: Dispatch<SetStateAction<string>>
+  toggleTheme: () => void
 }
 
-/**
- * Header component with a logo, a dropdown for font selection, and a dark mode switch.
- * @param {Object} props
- * @prop {string} currentFont - The currently selected font.
- * @prop {Function} applyFont - A function to set the current font.
- * @prop {string} theme - The current theme.
- * @prop {Function} setTheme - A function to set the current theme.
- * @returns {ReactElement} The Header component.
- */
-export default function Header({ currentFont, applyFont, theme, setTheme }: HeaderProps) {
+export default function Header({ currentFont, applyFont, theme, toggleTheme }: HeaderProps) {
   const [isDropdownExpanded, toggleDropdown] = useToggler(false)
-
-  function toggleTheme() {
-    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'))
-  }
 
   function selectItem(value: string) {
     applyFont(value)

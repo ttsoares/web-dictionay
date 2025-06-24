@@ -3,15 +3,7 @@ import type { Meaning } from "../utils/DictionaryTypes";
 interface MeaningProps {
   meaning: Meaning;
 }
-/**
- * A component that renders a Meaning object from the Free Dictionary API.
- * The component shows the part of speech, definitions, and synonyms for the meaning.
- * Synonyms are grouped by definition and also shown across all definitions.
- *
- * @param {Meaning} meaning - The Meaning object from the API
- *
- * @returns A JSX element representing the Meaning component
- */
+
 export default function MeaningComponent({ meaning }: MeaningProps) {
 
   // Flatten all synonyms
