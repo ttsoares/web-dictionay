@@ -23,7 +23,7 @@ export default function Dropdown({
   useClickOutside(wrapperRef, close, isExpanded);
 
   return (
-    <main className="relative h-full" ref={wrapperRef}>
+    <div className="relative h-full" ref={wrapperRef}>
       <button
         className="h-full font-bold text-body-s tablet:text-[1.125rem] flex items-center px-4 tablet:px-[1.625rem] border-r-gray-2 border-r-[1px]"
         onClick={open}
@@ -43,6 +43,6 @@ export default function Dropdown({
           {children}
         </ul>
       </CSSTransition>
-    </main>
+    </div>
   );
 }

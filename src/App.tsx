@@ -11,13 +11,15 @@ function App() {
 
   return (
     <BrowserRouter>
-      <InnerApp
-        currentFont={currentFont}
-        setCurrentFont={setCurrentFont}
-        fontClass={fontClass}
-        theme={theme}
-        toggleTheme={toggleTheme}
-      />
+      <main>
+        <InnerApp
+          currentFont={currentFont}
+          setCurrentFont={setCurrentFont}
+          fontClass={fontClass}
+          theme={theme}
+          toggleTheme={toggleTheme}
+        />
+      </main>
     </BrowserRouter>
   )
 }

@@ -24,7 +24,7 @@ export default function Word({ data, isError }: WordProps) {
   const meanings = data.meanings.map((meaning, index) => <Meaning key={index} meaning={meaning} />)
 
   return (
-    <main className="mt-10 mb-[5.25rem] tablet:mt-11 tablet:mb-[7.75rem]">
+    <section className="mt-10 mb-[5.25rem] tablet:mt-11 tablet:mb-[7.75rem]">
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-mobile-heading-l tablet:text-heading-l tablet:leading-heading-l font-bold tablet:mb-2">
@@ -50,6 +50,6 @@ export default function Word({ data, isError }: WordProps) {
           <NewWindowIcon />
         </div>
       </div>
-    </main>
+    </section>
   )
 }
